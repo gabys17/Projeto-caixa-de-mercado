@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\CaixaController;
+use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\MarcaController;
+use App\Http\Controllers\ProdutoController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +22,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', function () {
-    return view('home');
-});
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('categoria', CategoriaController::class)->except('show');
+Route::resource('caixa', CaixaController::class)->except('show');
+Route::resource('marca', MarcaController::class)->except('show');
+Route::resource('produto', ProdutoController::class)->except('show');

@@ -1,0 +1,37 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateCaixasTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('caixas', function (Blueprint $table) {
+            $table->id();
+            $table->string('CPF_na_nota', 11)->nullable();
+            $table->float('desconto', 24.4)->default(0);
+            $table->float('valor_total',24.4)->default(0);
+            $table->float('valor_total_desconto',24.4)->default(0);
+            $table->dateTime('dt_inicio');
+            $table->dateTime('dt_fim')->nullable();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('caixas');
+    }
+}
