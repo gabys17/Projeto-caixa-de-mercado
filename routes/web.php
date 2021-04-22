@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthPainelController;
 use App\Http\Controllers\CaixaController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\MarcaController;
@@ -17,16 +18,21 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/login', [AuthPainelController::class, 'login'])->name('login');
 
-Route::resource('categoria', CategoriaController::class)->except('show');
-Route::resource('caixa', CaixaController::class)->except('show');
-Route::resource('marca', MarcaController::class)->except('show');
-Route::resource('produto', ProdutoController::class)->except('show');
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/', function () {
+        return view('layouts.app');
+    });
+
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    
+    Route::resource('categoria', CategoriaController::class)->except('show');
+    Route::resource('caixa', CaixaController::class)->except('show');
+    Route::resource('marca', MarcaController::class)->except('show');
+    Route::resource('produto', ProdutoController::class)->except('show');
+    
+});
+

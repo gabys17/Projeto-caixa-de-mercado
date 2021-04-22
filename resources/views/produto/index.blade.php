@@ -1,5 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.page')
 
+@section('page_title', 'Produtos')
+
+@section('x_content')
 <div class="card border">
     <div class="card-body">
         <h2 class="card-title">Produtos</h2>
@@ -16,7 +19,7 @@
             <div class="alert alert-error">{{ session('error') }}</div>
         @endif
 
-        @if ($coun$produtos)
+        @if ($produtos)
             <table class="table table-ordered table-hover">
                 <thead>
                     <tr>
@@ -47,3 +50,4 @@
         @endif
     </div>
 </div>
+@endsection

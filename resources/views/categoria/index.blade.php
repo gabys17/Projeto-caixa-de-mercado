@@ -1,8 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.page')
 
+@section('page_title', 'Categorias')
+
+@section('x_content')
 <div class="card border">
     <div class="card-body">
-        <h2 class="card-title">Categorias</h2>
         <div class="pull-right">
             <a class="btn btn-success" href="{{ route ('categoria.create') }}" title="Crie uma categoria"><i class="fas fa-plus-circle"></i>
             </a>
@@ -47,4 +49,4 @@
         @endif
     </div>
 </div>
-
+@endsection
