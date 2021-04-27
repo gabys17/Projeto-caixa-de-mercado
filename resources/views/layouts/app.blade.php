@@ -29,20 +29,20 @@
     <!-- /compose -->
 
     <!-- jQuery -->
-    <script src="gentelella/vendors/jquery/dist/jquery.min.js"></script>
+    <script src="{{ asset ('gentelella/vendors/jquery/dist/jquery.min.js') }}"></script>
     <!-- Bootstrap -->
-    <script src="gentelella/vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset ('gentelella/vendors/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
     <!-- FastClick -->
-    <script src="gentelella/vendors/fastclick/lib/fastclick.js"></script>
+    <script src="{{ asset ('gentelella/vendors/fastclick/lib/fastclick.js') }}"></script>
     <!-- NProgress -->
-    <script src="gentelella/vendors/nprogress/nprogress.js"></script>
+    <script src="{{ asset ('gentelella/vendors/nprogress/nprogress.js') }}"></script>
     <!-- bootstrap-wysiwyg -->
-    <script src="gentelella/vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js"></script>
-    <script src="gentelella/vendors/jquery.hotkeys/jquery.hotkeys.js"></script>
-    <script src="gentelella/vendors/google-code-prettify/src/prettify.js"></script>
+    <script src="{{ asset ('gentelella/vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js') }}"></script>
+    <script src="{{ asset ('gentelella/vendors/jquery.hotkeys/jquery.hotkeys.js') }}"></script>
+    <script src="{{ asset ('gentelella/vendors/google-code-prettify/src/prettify.js') }}"></script>
 
     <!-- Custom Theme Scripts -->
-    <script src="gentelella/build/js/custom.min.js"></script>
+    <script src="{{ asset ('gentelella/build/js/custom.min.js') }}"></script>
 
   </body>
 </html>

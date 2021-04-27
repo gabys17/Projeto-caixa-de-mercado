@@ -1,42 +1,38 @@
 @extends('layouts.page')
 
-@section('page_title', 'Produtos')
+@section('page_title', 'Caixa')
 
 @section('x_content')
 <div class="card border">
     <div class="card-body">
-        <h2 class="card-title">Produtos</h2>
-        <div class="pull-right">
-            <a class="btn btn-success" href="{{ route ('produto.create') }}" title="Crie um produto"><i class="fas fa-plus-circle"></i>
-            </a>
-        </div>
+        <h2 class="card-title">Caixa</h2>
 
-        @if (session('success'))
-            <div class="alert alert-success">{{ session('success') }}</div>
-        @endif
 
-        @if (session('error'))
-            <div class="alert alert-error">{{ session('error') }}</div>
-        @endif
-
-        @if ($produtos)
+        @if ($caixas)
             <table class="table table-ordered table-hover">
                 <thead>
                     <tr>
+                        <th>CPF_na_nota</th>
                         <th>nomeCategoria</th>
                         <th>nomeMarca</th>
-                        <th>Nome</th>
+                        <th>NomeProduto</th>
                         <th>Valor</th>
                         <th>Código</th>
                         <th>Imagem</th>
                         <th>Estoque</th>
+                        <th>Desconto</th>
+                        <th>valor_total</th>
+                        <th>valor_total_desconto</th>
+                        <th>dt_inicio</th>
+                        <th>dt_fim</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
 
                 <body>
-                    @foreach ($produtos as $index=>$produto)
+                    @foreach ($caixas as $index=>$caixa)
                     <tr>
+                        <td>{{ $caixa->CPF_na_nota }}</td>
                         <td>{{ $categoria->nomeCategoria }}</td>
                         <td>{{ $marca->nomeMarca }}</td>
                         <td>{{ $produto->nome }}</td>
@@ -44,6 +40,11 @@
                         <td>{{ $produto->codigo }}</td>
                         <td>{{ $produto->imagem }}</td>
                         <td>{{ $produto->estoque }}</td>
+                        <td>{{ $caixa->desconto }}</td>
+                        <td>{{ $caixa->valor_total }}</td>
+                        <td>{{ $caixa->valor_total_desconto }}</td>
+                        <td>{{ $caixa->dt_inicio }}</td>
+                        <td>{{ $caixa->dt_fim }}</td>
                         <td>
                             <a href="{{ route ('produto.edit', $produto->id)}}" class="btn btn-sn btn-warning">Editar</a><i
                                 class="fas fa-edit"></i>

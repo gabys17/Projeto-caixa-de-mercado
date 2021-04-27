@@ -2,7 +2,7 @@
     <section class="login_content">
         <form method="POST" action="{{ route('login') }}">
             @csrf
-            <h1>Login Form</h1>
+            <h1>Login FormXXX</h1>
             <div>
                 <input name="email" type="email" class="form-control" placeholder="E-mail" required="" />
             </div>

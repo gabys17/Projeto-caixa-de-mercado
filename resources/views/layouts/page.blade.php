@@ -20,7 +20,10 @@
                         </div>
                         <div class="profile_info">
                             <span>Welcome,</span>
-                            <h2>John Doe</h2>
+                            @guest
+                                visitante
+                            @endguest
+                            {{-- <h2>{{ auth()->user->name }}</h2> --}}
                         </div>
                     </div>
                     <!-- /menu profile quick info -->

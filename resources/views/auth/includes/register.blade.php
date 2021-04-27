@@ -13,7 +13,7 @@
             </div>
             <div>
                 <input id="password" type="password"
-                            class="form-control @error('password') is-invalid @enderror" name="password" required
+                            class="form-control @error('password') is-invalid @enderror" name="password" required>
             </div>
             <div>
                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation"

@@ -5,13 +5,18 @@
         <form action="{{ route('produto.store')}}" method="POST">
             @csrf
             <div class="form-group">
+                <label for="CPF_na_nota">CPF na nota</label>
+                <input type="text" class="form-control" name="CPF_na_nota" id="CPF_na_nota"
+                    placeholder="CPF_na_nota" required>
+            </div>
+            <div class="form-group">
                 <label for="nomeCategoria">Categoria</label>
-                <select type="text" class="form-control" name="categoria" id="nomeCategoria"
+                <input type="text" class="form-control" name="categoria" id="nomeCategoria"
                     placeholder="categoria" required>
             </div>
             <div class="form-group">
                 <label for="nomeMarca">Marca</label>
-                <select type="text" class="form-control" name="marca" id="nomeMarca"
+                <input type="text" class="form-control" name="marca" id="nomeMarca"
                     placeholder="marca" required>
             </div>
             <div class="form-group">
@@ -38,6 +43,31 @@
                 <label for="nomeProduto">Estoque</label>
                 <input type="number" class="form-control" name="estoque" id="estoque"
                     placeholder="Nome do produto" required>
+            </div>
+            <div class="form-group">
+                <label for="desconto">Desconto</label>
+                <input type="number" class="form-control" name="desconto" id="desconto"
+                    placeholder="Desconto" required>
+            </div>
+            <div class="form-group">
+                <label for="valor_total">Valor total</label>
+                <input type="number" class="form-control" name="valor_total" id="valor_total"
+                    placeholder="Valor total" required>
+            </div>
+            <div class="form-group">
+                <label for="valor_total_desconto">Valor total desconto</label>
+                <input type="number" class="form-control" name="valor_total_desconto" id="valor_total_desconto"
+                    placeholder="valor_total_desconto" required>
+            </div>
+            <div class="form-group">
+                <label for="dt_inicio">Data de início</label>
+                <input type="number" class="form-control" name="dt_inicio" id="dt_inicio"
+                    placeholder="Data de início" required>
+            </div>
+            <div class="form-group">
+                <label for="dt_fim">Data final</label>
+                <input type="number" class="form-control" name="dt_fim" id="dt_fim"
+                    placeholder="Data final" required>
             </div>
             <button type="submit" class="btn btn-sm btn-success">Save</button>
         </form>
