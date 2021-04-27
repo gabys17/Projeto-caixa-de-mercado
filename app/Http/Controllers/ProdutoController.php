@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
+use App\Models\Marca;
 use App\Models\Produto;
 use Illuminate\Http\Request;
 
@@ -14,13 +16,19 @@ class ProdutoController extends Controller
      */
     public function index()
     {
+
+        $categoria = Categoria::all();
+        $marca = Marca::all();
         $produtos = Produto::all();
+
 
         $countProdutos = count($produtos) > 0;
 
         return view('produto.index', array(
+            'nomeCategoria' => $categoria,
+            'nomeMarca' => $marca,
             'produtos' => $produtos,
-            'countProdutos' => $countProdutos
+            'countProdutos' => $countProdutos,
         ));
     }
 

@@ -3,6 +3,7 @@
 @section('page_title', 'Produtos')
 
 @section('x_content')
+
 <div class="card border">
     <div class="card-body">
         <h2 class="card-title">Produtos</h2>
@@ -23,8 +24,8 @@
             <table class="table table-ordered table-hover">
                 <thead>
                     <tr>
-                        <th>nomeCategoria</th>
-                        <th>nomeMarca</th>
+                        <th>Categoria</th>
+                        <th>Marca</th>
                         <th>Nome</th>
                         <th>Valor</th>
                         <th>Código</th>
@@ -37,8 +38,8 @@
                 <body>
                     @foreach ($produtos as $index=>$produto)
                     <tr>
-                        <td>{{ $categoria->nomeCategoria }}</td>
-                        <td>{{ $marca->nomeMarca }}</td>
+                        <td>{{ $produto->categoria->nomeCategoria }}</td>
+                        <td>{{ $produto->marca->nomeMarca }}</td>
                         <td>{{ $produto->nome }}</td>
                         <td>{{ $produto->valor }}</td>
                         <td>{{ $produto->codigo }}</td>

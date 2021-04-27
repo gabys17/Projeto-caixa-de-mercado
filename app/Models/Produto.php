@@ -11,9 +11,14 @@ class Produto extends Model
 
     protected $fillable = ['nome', 'valor', 'código', 'imagem', 'estoque'];
 
+    public function categoria()
+    {
+        return $this->belongsTo(Categoria::class);
+    }
+
     public function marca()
     {
-        return $this->hasOne(Marca::class);
+        return $this->belongsTo(Marca::class);
     }
 }
 
