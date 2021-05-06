@@ -17,16 +17,11 @@ class ProdutoController extends Controller
     public function index()
     {
 
-        $categoria = Categoria::all();
-        $marca = Marca::all();
-        $produtos = Produto::all();
+        $produtos = Produto::with('categoria', 'marca')->paginate(100);
 
-
-        $countProdutos = count($produtos) > 0;
+        $countProdutos = $produtos->count();
 
         return view('produto.index', array(
-            'nomeCategoria' => $categoria,
-            'nomeMarca' => $marca,
             'produtos' => $produtos,
             'countProdutos' => $countProdutos,
         ));
@@ -39,7 +34,13 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-        return view('produto.create');
+        $categorias = Categoria::select('id', 'nome')->get();
+        $marcas = Marca::select('id', 'nome')->get();
+
+        return view('produto.create', [
+            'categorias' => $categorias,
+            'marcas' => $marcas,
+        ]);
     }
 
     /**
@@ -52,10 +53,12 @@ class ProdutoController extends Controller
     {
         $produto = new Produto();
         $produto->nome = $request->input('nomeProduto');
-        $produto->valor = $request->input('Valor');
+        $produto->valor = $request->input('valor');
         $produto->codigo = $request->input('codigo');
         $produto->imagem = $request->input('imagem');
         $produto->estoque = $request->input('estoque');
+        $produto->categoria_id = $request->input('nomeCategoria');//valor do name na view - input formulario
+        $produto->marca_id = $request->input('nomeMarca');
         $produto->save();
         return redirect('produto');
     }
@@ -63,12 +66,19 @@ class ProdutoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Produto  $produto
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Produto $produto)
+    public function show($id)
     {
-        //
+        $categorias = Categoria::select('id', 'nome')->get();
+        $marcas = Marca::select('id', 'nome')->get();
+
+        return view('produto.show', [
+            'produto' => Produto::findOrFail($id),
+            'categorias' => $categorias,
+            'marcas' => $marcas,
+        ]);
     }
 
     /**
@@ -79,9 +89,15 @@ class ProdutoController extends Controller
      */
     public function edit($id)
     {
+        $categorias = Categoria::select('id', 'nome')->get();
+        $marcas = Marca::select('id', 'nome')->get();
+
         $produto = Produto::find($id);
         if(isset($produto)){
-            return view('produto.edit', compact('produto'));
+            return view('produto.edit', compact('produto'), [
+            'categorias' => $categorias,
+            'marcas' => $marcas,
+            ]);
         }
         return redirect('produto.index');
     }

@@ -14,17 +14,14 @@ class CaixaController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $caixas = Caixa::with('categoria', 'marca', 'produto')->paginate(100);
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $countCaixas = $caixas->count();
+
+        return view('caixa.index', array(
+            'caixas' => $caixas,
+            'countCaixas' => $countCaixas,
+        ));
     }
 
     /**
@@ -35,7 +32,7 @@ class CaixaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //guarda os produtos no carrinho
     }
 
     /**
@@ -46,40 +43,27 @@ class CaixaController extends Controller
      */
     public function show(Caixa $caixa)
     {
-        //
+        // mostrar produto para consulta de valor e outras infos
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Caixa  $caixa
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Caixa $caixa)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Caixa  $caixa
-     * @return \Illuminate\Http\Response
-     */
+    * Update the specified resource in storage.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @param  \App\Models\Caixa  $caixa
+    * @return \Illuminate\Http\Response
+    */
     public function update(Request $request, Caixa $caixa)
     {
-        //
+        // altera a quantidade do produto
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Caixa  $caixa
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Caixa $caixa)
+    public function destroy($id)
     {
-        //
+        $caixa = Produto::find($id);
+        if(isset($produto)){
+            $produto->delete();
+        }
+        return redirect('caixa');
     }
 }

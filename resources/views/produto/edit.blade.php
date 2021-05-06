@@ -1,23 +1,33 @@
-@extends('layouts.app')
+@extends('layouts.page')
+
+@section('page_title', 'Produtos')
+
+@section('x_content')
 
 <div class="card border">
     <div class="card-body">
-        <form action="{{ route ('marca.update', $marca->id)}}" method="POST">
+        <form action="{{ route ('produto.update', $produto->id)}}" method="POST">
             @method('PUT')
             @csrf
             <div class="form-group">
-                <label for="nomeCategoria">Nome da Categoria</label>
-                <select type="text" class="form-control" name="categoria" value="{{$categoria->nome}}" id="nomeCategoria"
-                    placeholder="categoria">
+                <select class="form-select" name="nomeCategoria" aria-label="Qual é a categoria?">
+                    <option selected>Selecione a categoria</option>
+                    @foreach ($categorias as $categoria)
+                        <option value="{{$categoria->id}}">{{$categoria->nome}}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="form-group">
-                <label for="nomeMarca">Nome da Marca</label>
-                <select type="text" class="form-control" name="nomeMarca" value="{{$marca->nome}}" id="nomeMarca"
-                    placeholder="Nome da Marca">
+                <select class="form-select" name="nomeMarca" aria-label="Qual é a marca?">
+                    <option selected>Selecione a marca</option>
+                    @foreach ($marcas as $marca)
+                        <option value="{{$marca->id}}">{{$marca->nome}}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="form-group">
                 <label for="nomeProduto">Nome do produto</label>
-                <input type="text" class="form-control" name="nomeProduto" value="{{$produto->nome}}" id="nomeProduto"
+                <input type="text" class="form-control" name="nomeProduto" value="{{$produto->nome}}" id="nome"
                     placeholder="Nome do produto">
             </div>
             <div class="form-group">
@@ -31,9 +41,9 @@
                     placeholder="imagem">
             </div>
             <div class="form-group">
-                <label for="codigo">Imagem</label>
-                <input type="text" class="form-control" name="imagem" value="{{$produto->imagem}}" id="imagem"
-                    placeholder="imagem">
+                <label for="Picture">Insert the product's picture here</label>
+                <input type="file" id="myFile" name="filename" value="{{$produto->imagem}}">
+                <input type="submit">
             </div>
             <div class="form-group">
                 <label for="nomeProduto">Estoque</label>
@@ -43,8 +53,10 @@
             <button type="submit" class="btn btn-sm btn-success">Save</button>
         </form>
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route ('marca.index') }}" title="Go back"> <i
+            <a class="btn btn-primary" href="{{ route ('produto.index') }}" title="Go back"> <i
                     class="fas fa-backward "></i></a>
         </div>
     </div>
 </div>
+
+@endsection

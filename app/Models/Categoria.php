@@ -9,12 +9,6 @@ use Kirschbaum\PowerJoins\PowerJoins;
 class Categoria extends Model
 {
     use HasFactory;
-    
-    protected $fillable = ['nome'];
-}
 
-class Marca extends Model
-{
-    use PowerJoins;
-    //Categoria::joinRelationship('marcas.produtos');
+    protected $fillable = ['nome'];
 }

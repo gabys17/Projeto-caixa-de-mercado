@@ -2,7 +2,7 @@
     <section class="login_content">
         <form method="POST" action="{{ route('login') }}">
             @csrf
-            <h1>Login FormXXX</h1>
+            <h1>Cadastre-se aqui</h1>
             <div>
                 <input name="email" type="email" class="form-control" placeholder="E-mail" required="" />
             </div>
@@ -10,25 +10,18 @@
                 <input name="password" type="password" class="form-control" placeholder="Password" required="" />
             </div>
             <div>
-                <button type="submit" class="btn btn-default submit">submit</button>
-                <a class="reset_pass" href="#">Lost your password?</a>
+                <button type="submit" class="btn btn-default submit">enviar</button>
+                <a class="reset_pass" href="#">Nao lembra a senha?</a>
             </div>
 
             <div class="clearfix"></div>
 
             <div class="separator">
-                <p class="change_link">New to site?
-                    <a href="#signup" class="to_register"> Create Account </a>
+                <p class="change_link">Novo na empresa?
+                    <a href="#signup" class="to_register">Registre-se aqui</a>
                 </p>
-
                 <div class="clearfix"></div>
-                <br />
-
-                <div>
-                    <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
-                    <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and
-                        Terms</p>
-                </div>
+                <br/>
             </div>
         </form>
     </section>

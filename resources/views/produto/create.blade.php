@@ -1,43 +1,50 @@
-@extends('layouts.app')
+@extends('layouts.page')
+
+
+@section('page_title', 'Produtos')
+
+@section('x_content')
 
 <div class="card border">
     <div class="card-body">
         <form action="{{ route('produto.store')}}" method="POST">
             @csrf
             <div class="form-group">
-                <label for="nomeCategoria">Categoria</label>
-                <select type="text" class="form-control" name="categoria" id="nomeCategoria"
-                    placeholder="categoria" required>
+                <select class="form-select" name="nomeCategoria" aria-label="Qual é a categoria?">
+                    <option selected>Selecione a categoria</option>
+                    @foreach ($categorias as $categoria)
+                        <option value="{{$categoria->id}}">{{$categoria->nome}}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="form-group">
-                <label for="nomeMarca">Marca</label>
-                <select type="text" class="form-control" name="marca" id="nomeMarca"
-                    placeholder="marca" required>
+                <select class="form-select" name="nomeMarca" aria-label="Qual é a marca?">
+                    <option selected>Selecione a marca</option>
+                    @foreach ($marcas as $marca)
+                        <option value="{{$marca->id}}">{{$marca->nome}}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="form-group">
                 <label for="nomeProduto">Nome do produto</label>
-                <input type="text" class="form-control" name="nomeProduto" id="nomeProduto"
-                    placeholder="Nome do produto" required>
+                <input type="text" class="form-control" name="nomeProduto" id="nomeProduto" required>
             </div>
             <div class="form-group">
                 <label for="valor">Valor do produto</label>
-                <input type="number" class="form-control" name="valor" id="valor"
-                    placeholder="Nome do produto" required>
+                <input type="number" class="form-control" name="valor" id="valor" min="0.00" max="10000.00" step="0.01" required>
             </div>
             <div class="form-group">
                 <label for="codigo">Código</label>
-                <input type="number" class="form-control" name="codigo" id="codigo"
-                    placeholder="imagem" required>
+                <input type="number" class="form-control" name="codigo" id="codigo" required>
             </div>
             <div class="form-group">
-                <label for="codigo">Imagem</label>
-                <input type="text" class="form-control" name="imagem" id="imagem"
-                    placeholder="imagem" required>
+                <label for="Picture">Insert the product's picture here</label>
+                    <input type="file" id="myFile" name="filename">
+                    <input type="submit">
             </div>
             <div class="form-group">
                 <label for="nomeProduto">Estoque</label>
-                <input type="number" class="form-control" name="estoque" id="estoque"
-                    placeholder="Nome do produto" required>
+                <input type="number" class="form-control" name="estoque" id="estoque" min="0" max="10000" step="0.01" required>
             </div>
             <button type="submit" class="btn btn-sm btn-success">Save</button>
         </form>
@@ -47,3 +54,5 @@
         </div>
     </div>
 </div>
+
+@endsection

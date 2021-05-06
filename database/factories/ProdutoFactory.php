@@ -27,7 +27,6 @@ class ProdutoFactory extends Factory
             'código'=> $this->faker->text(maxNbChars:15),
             'imagem' => $this->faker->text(maxNbChars:255),
             'estoque' => $this->faker->randomNumber(),
-            'marca_id' => $this->faker->numberBetween(1, 10),
         ];
     }
 }

@@ -21,7 +21,7 @@ class CreateProdutosTable extends Migration
             $table->foreign('marca_id')->references('id')->on('marcas');
             $table->string('nome', 60);
             $table->float('valor', 14.4);
-            $table->string('código', 15);
+            $table->string('codigo', 15);
             $table->string('imagem', 255)->nullable();
             $table->integer('estoque');
             $table->timestamps();

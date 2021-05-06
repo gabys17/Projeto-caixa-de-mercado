@@ -21,6 +21,8 @@ use App\Http\Controllers\AuthPainelController;
 */
 Auth::routes();
 
+
+
 Route::get('/login', [AuthPainelController::class, 'login'])->name('login');
 
 Route::group(['middleware' => ['auth']], function () {
@@ -28,12 +30,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/', [DashboardController::class, 'redirectToIndex']);
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/home', [DashboardController::class, 'redirectToIndex'])->name('home');
 
     Route::resource('categoria', CategoriaController::class)->except('show');
     Route::resource('caixa', CaixaController::class)->except('show');
     Route::resource('marca', MarcaController::class)->except('show');
-    Route::resource('produto', ProdutoController::class)->except('show');
+    Route::resource('produto', ProdutoController::class);
 
 
 });

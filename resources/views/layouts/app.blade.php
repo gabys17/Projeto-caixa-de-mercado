@@ -21,6 +21,7 @@
     <link href="{{ asset('gentelella/vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet') }}">
     <!-- Custom Theme Style -->
     <link href="{{ asset('gentelella/build/css/custom.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" crossorigin="anonymous" />
 </head>
 
   <body class="@yield('body_class', 'nav-md')">

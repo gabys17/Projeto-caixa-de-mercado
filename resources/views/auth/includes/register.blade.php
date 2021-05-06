@@ -2,7 +2,7 @@
     <section class="login_content">
         <form method="POST" action="{{ route('register') }}">
             @csrf
-            <h1>Create Account</h1>
+            <h1>Cadastre-se aqui</h1>
             <div>
                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
                             name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -26,18 +26,12 @@
             <div class="clearfix"></div>
 
             <div class="separator">
-                <p class="change_link">Already a member ?
-                    <a href="#signin" class="to_register"> Log in </a>
+                <p class="change_link">Já é registrado conosco ?
+                    <a href="#signin" class="to_register"> Entre aqui </a>
                 </p>
 
                 <div class="clearfix"></div>
-                <br />
-
-                <div>
-                    <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
-                    <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and
-                        Terms</p>
-                </div>
+                <br/>
             </div>
         </form>
     </section>

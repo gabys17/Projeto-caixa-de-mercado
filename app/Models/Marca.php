@@ -11,9 +11,3 @@ class Marca extends Model
 
     protected $fillable = ['nome'];
 }
-
-class Produto extends Model
-{
-    //use PowerJoins;
-    //Categoria::joinRelationship('marcas.produtos');
-}

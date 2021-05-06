@@ -7,8 +7,7 @@
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella
-                                Alela!</span></a>
+                        <a href="{{ route('caixa.index') }}" class="site_title"><i class="fa fa-shopping-cart"></i><span> Supermercado </span></a>
                     </div>
 
                     <div class="clearfix"></div>
@@ -16,14 +15,11 @@
                     <!-- menu profile quick info -->
                     <div class="profile clearfix">
                         <div class="profile_pic">
-                            <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                            <img src="https://cdn2.vectorstock.com/i/1000x1000/22/36/employee-woman-vector-23342236.jpg" alt="..." class="img-circle profile_img">
                         </div>
                         <div class="profile_info">
                             <span>Welcome,</span>
-                            @guest
-                                visitante
-                            @endguest
-                            {{-- <h2>{{ auth()->user->name }}</h2> --}}
+                            <h2>{{ auth()->user()->name }}</h2>
                         </div>
                     </div>
                     <!-- /menu profile quick info -->
@@ -33,9 +29,9 @@
                     <!-- sidebar menu -->
                     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                         <div class="menu_section">
-                            <h3>General</h3>
+                            <h3>Administrativo</h3>
                             <ul class="nav side-menu">
-                                <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                                <li><a><i class="fa fa-home"></i>Cadastro<span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="{{ route('categoria.index') }}">Categorias</a></li>
                                         <li><a href="{{ route('marca.index') }}">Marcas</a></li>
@@ -78,25 +74,24 @@
                             <li class="nav-item dropdown open" style="padding-left: 15px;">
                                 <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true"
                                     id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                                    <img src="images/img.jpg" alt="">John Doe
+                                    <img src="https://cdn2.vectorstock.com/i/1000x1000/22/36/employee-woman-vector-23342236.jpg" alt=""><h4>{{ auth()->user()->name }}</h4>
                                 </a>
                                 <div class="dropdown-menu dropdown-usermenu pull-right"
                                     aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="javascript:;"> Profile</a>
+                                    <a class="dropdown-item" href="javascript:;"> Perfil </a>
                                     <a class="dropdown-item" href="javascript:;">
                                         <span class="badge bg-red pull-right">50%</span>
-                                        <span>Settings</span>
+                                        <span>Configuraçoes</span>
                                     </a>
-                                    <a class="dropdown-item" href="javascript:;">Help</a>
-                                    <a class="dropdown-item" href="login.html"><i class="fa fa-sign-out pull-right"></i>
-                                        Log Out</a>
+                                    <a class="dropdown-item" href="javascript:;">Ajuda</a>
+                                    <a class="dropdown-item" href="login"><i class="fa fa-sign-out"></i> Sair </a>
                                 </div>
                             </li>
 
                             <li role="presentation" class="nav-item dropdown open">
                                 <a href="javascript:;" class="dropdown-toggle info-number" id="navbarDropdown1"
                                     data-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa fa-envelope-o"></i>
+                                    <i class="fa fa-envelope"></i>
                                     <span class="badge bg-green">6</span>
                                 </a>
                                 <ul class="dropdown-menu list-unstyled msg_list" role="menu"
@@ -208,7 +203,7 @@
             <!-- footer content -->
             <footer>
                 <div class="pull-right">
-                    Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+                    GVS Systems <a href="https://colorlib.com"> - Supermercados</a>
                 </div>
                 <div class="clearfix"></div>
             </footer>

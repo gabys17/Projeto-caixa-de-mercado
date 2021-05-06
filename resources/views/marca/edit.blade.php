@@ -1,4 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.page')
+
+@section('page_title', 'Marcas')
+
+@section('x_content')
 
 <div class="card border">
     <div class="card-body">
@@ -18,3 +22,5 @@
         </div>
     </div>
 </div>
+
+@endsection
