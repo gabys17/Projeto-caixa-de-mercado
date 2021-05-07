@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 class CaixaController extends Controller
 {
+    private $items;
+
     /**
      * Display a listing of the resource.
      *
@@ -66,4 +68,23 @@ class CaixaController extends Controller
         }
         return redirect('caixa');
     }
+
+    public function addItem($produto_id, $quantity = null)
+    {
+        $produto_quantity = $this->items[$produto_id] ['quantity'] ?? null;
+
+        $this->items[$produto_id] = [
+            'produto_id' => $produto_id,
+            'quantity' => $produto_quantity + ($quantity ?? 1),
+        ];
+        dump($this->items);
+    }
+
+    public function removeItem($produto_id)
+    {
+        unset($this->items[$produto_id]);
+
+        dump($this->items);
+    }
+
 }
