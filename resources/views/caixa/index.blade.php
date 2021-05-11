@@ -4,173 +4,100 @@
 
 @section('x_content')
 
-<div class="right_col" role="main">
-    <div class="">
-      <div class="page-title">
-        <div class="title_left">
-          <h3>Caixa<small> Aberto</small></h3>
+<div class="row">
+    <div class="col-12">
+        <div class="row">
+            <div class="col-4 font-bold">Nome do produto</div>
+            <div class="col-8 font-bold">Marca e categoria</div>
         </div>
+    </div>
 
-      <div class="clearfix"></div>
-
-      <div class="row" style="display: block;">
-        <div class="col-md-6 col-sm-6  ">
-          <div class="x_panel">
-            <div class="x_title">
-              <h2>Produto<small>Categoria e Marca</small></h2>
-              <div class="clearfix"></div>
+    <div class="col-12">
+        <div class="row">
+            <div class="col-3">
+                <img src="{{ asset('imagens/talher.jpeg') }}" alt="Imagem do produto" class="responsive">
             </div>
-            <div class="x_content">
-                <form class=" mt-2 mb-2 form-label-left input_mask">
-                    <div class="form-group row">
-                        <h4>Imagem</h4>
-                        {{-- {{$produto->imagem}} --}}
-                    </div>
-                    <div class="col-md-6 col-sm-6  form-group has-feedback">
-                        <h4>Código</h4>
-                        {{-- <h4 class="prod_codigo">Código: {{$produto->codigo}}</h4> --}}
-                    </div>
-                    <div class="col-md-6 col-sm-6  form-group has-feedback">
-                        {{-- <h4 class="prod_estoque">Estoque:{{$produto->estoque}}</h4> --}}
-                    </div>
-                    <div class="col-md-6 col-sm-6  form-group has-feedback">
-                        <input type="number" class="form-control has-feedback-left" id="quantidade" placeholder="Quantidade">
-                    </div>
-                    <div class="col-md-6 col-sm-6  form-group has-feedback">
-                        <h4>valor</h4>
-                        {{-- <h1>R$ {{$produto->valor}}</h1> --}}
-                    </div>
-                    <div class="col-md-6 col-sm-6  form-group has-feedback">
-                        <data type="text" class="form-control" id="valor total produto" placeholder="Valor total deste produto">
-                            <h4>Valor total do produto</h4>
-                    </div>
-                </form>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="col-md-6 col-sm-6  ">
-          <div class="x_panel">
-            <div class="x_title">
-              <h2>CPF na nota</h2>
-              <div class="clearfix"></div>
-            </div>
-            <div class="x_content">
-                <input type="text">
-                <button type="submit" class="btn btn-success">Enviar</button>
-            </div>
-            <div class="form-group col-3">
-                <input type="text" class="form-control has-feedback-left" placeholder="Data inicial">
-                <input type="text" class="form-control has-feedback-right" placeholder="Data final">
-            </div>
-            <div class="form-group col-3">
-                <input type="text" class="form-control has-feedback-right" placeholder="Data final">
-            </div>
-            <div class="ln_solid"></div>
-                    <div class="form-group">
-                        <div class="">
-                            <button type="button" class="btn btn-primary">Nova
-                                venda</button>
-                            <button type="reset" class="btn btn-primary">Alterar
-                                venda</button>
-                            <button type="submit" class="btn btn-success">Finalizar
-                                venda</button>
-                            <button type="submit" class="btn btn-success">Cancelar
-                                venda</button>
+            <div class="col-3">
+                <div class="row">
+                    <fieldset disabled>
+                        <legend class="mb-0">Código</legend>
+                        <div class="m-0 mb-1">
+                          <input type="text" id="disabledTextInput" class="form-control" value="789">
                         </div>
-                    </div>
+
+                        <legend class="mb-0">Código</legend>
+                        <div class="m-0 mb-1">
+                          <input type="text" id="disabledTextInput" class="form-control" value="789">
+                        </div>
+
+                        <legend class="mb-0">Código</legend>
+                        <div class="m-0 mb-1">
+                          <input type="text" id="disabledTextInput" class="form-control" value="789">
+                        </div>
+
+                    </fieldset>
                 </div>
-          </div>
-        </div>
-
-        <div class="clearfix"></div>
-
-        <div class="col-md-6 col-sm-6  ">
-          <div class="x_panel">
-            <div class="x_title">
-              <h2>Hover rows <small>Try hovering over the rows</small></h2>
-              <div class="clearfix"></div>
             </div>
-            <div class="x_content">
-                <form class="form-horizontal form-label-left">
-
-                    <div type="number" class="form-group row">
-                        <label class="control-label">Subtotal</label>
-                        <data type="number" class="form-control" placeholder="Default Input">
-                    </div>
-                    <div class="form-group row ">
-                        <label class="control-label">Desconto %</label>
-                        <input type="number" class="form-control">
-                    </div>
-                    <div class="form-group row ">
-                        <label class="control-label">Total com desconto</label>
-                        <data type="number" class="form-control" placeholder="Default Input">
-                    </div>
-                    <div class="form-group row ">
-                        <label class="control-label">Valor recebido</label>
-                        <input type="number" class="form-control">
-                    </div>
-                    <div class="form-group row ">
-                        <label class="control-label ">Troco</label>
-                        <data type="number" class="form-control" placeholder="Default Input">
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-3">
-                            <input type="text" class="form-control has-feedback-left" placeholder="Data inicial">
-                        </div>
-                        <div class="form-group col-3">
-                            <input type="text" class="form-control has-feedback-right" placeholder="Data final">
-                        </div>
-                    </div>
-                </form>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="col-md-6 col-sm-6  ">
-          <div class="x_panel">
-            <div class="x_title">
-              <h2>Listagem de produtos</h2>
-              <div class="clearfix"></div>
-            </div>
-            <div class="x_content">
-                @if ($caixas)
-                    <table class="table table-ordered table-hover">
+            <div class="col-6">
+                <div class="w-100">
+                    <table class="w-100 cupom-fiscal">
                         <thead>
                             <tr>
-                                <th>Nº item</th>
-                                <th>Código</th>
+                                <th>#</th>
                                 <th>Nome</th>
+                                <th>Código</th>
                                 <th>Quantidade</th>
                                 <th>Valor unitário</th>
-                                <th>valor total</th>
+                                <th>Valor total</th>
                             </tr>
                         </thead>
-                        <body>
-                            @foreach ($caixas as $index=>$caixa)
+                        <tbody>
+                            @foreach ( range(1,10) as $i)
+
                             <tr>
-                                <td>Nº</td>
-                                <td>{{ $caixa->produto->codigo }}</td>
-                                <td>{{ $caixa->produto->nome }}</td>
-                                <td>{{ $caixa->produto->quantidade }}</td>
-                                <td>{{ $caixa->produto->valor }}</td>
-                                <td>{{ $caixa->valor_total }}</td>
-                                </form>
+                                <td class="align-center">{{ $i }}</td>
+                                <td class="align-center">produto</td>
+                                <td class="align-center">168596</td>
+                                <td class="align-center">42</td>
+                                <td class="align-center">56</td>
+                                <td class="align-center">12</td>
                             </tr>
                             @endforeach
-                        </body>
+                        </tbody>
                     </table>
-                @endif
+                </div>
             </div>
-          </div>
         </div>
-
-        <div class="clearfix"></div>
-
-      </div>
     </div>
-  </div>
+
+    <div class="col-12">
+        <div class="row">
+            <div class="col-6">
+                <button class="btn btn-warning">Nova venda (F2)</button>
+                <button class="btn btn-warning">Editar (F3)</button>
+                <button class="btn btn-warning">Cancelar (F4)</button>
+                <button class="btn btn-warning">Finalizar (F8)</button>
+            </div>
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="w-100">Desconto</div>
+                        <div class="w-100">€ 0.00</div>
+                    </div>
+                    <div class="col-6">
+                        <div class="w-100">Valor total</div>
+                        <div class="w-100">€ 0.00</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12">
+        <div class="row">
+            <div class="col-12">Ajuda (F1)</div>
+        </div>
+    </div>
+</div>
 
 @endsection

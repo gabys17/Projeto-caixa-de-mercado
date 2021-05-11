@@ -55,11 +55,13 @@ class ProdutoController extends Controller
         $produto->nome = $request->input('nomeProduto');
         $produto->valor = $request->input('valor');
         $produto->codigo = $request->input('codigo');
-        $produto->imagem = $request->input('imagem');
         $produto->estoque = $request->input('estoque');
         $produto->categoria_id = $request->input('nomeCategoria');//valor do name na view - input formulario
         $produto->marca_id = $request->input('nomeMarca');
+        $produto->imagem = $request->input('file');
+
         $produto->save();
+
         return redirect('produto');
     }
 
@@ -114,7 +116,7 @@ class ProdutoController extends Controller
         $produto = Produto::find($id);
         if(isset($produto)){
             $produto->nome = $request->input('nomeProduto');
-            $produto->valor = $request->input('Valor');
+            $produto->valor = $request->input('valor');
             $produto->codigo = $request->input('codigo');
             $produto->imagem = $request->input('imagem');
             $produto->estoque = $request->input('estoque');

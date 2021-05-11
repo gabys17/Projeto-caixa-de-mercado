@@ -38,8 +38,8 @@
                 <input type="number" class="form-control" name="codigo" id="codigo" required>
             </div>
             <div class="form-group">
-                <label for="Picture">Insert the product's picture here</label>
-                    <input type="file" id="myFile" name="filename">
+                <label for="imagens">Imagem</label>
+                    <input type="file" required name="file">
                     <input type="submit">
             </div>
             <div class="form-group">

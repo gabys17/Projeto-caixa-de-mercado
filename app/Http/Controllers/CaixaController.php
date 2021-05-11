@@ -85,6 +85,8 @@ class CaixaController extends Controller
         unset($this->items[$produto_id]);
 
         dump($this->items);
+
+        // update item
     }
 
 }
