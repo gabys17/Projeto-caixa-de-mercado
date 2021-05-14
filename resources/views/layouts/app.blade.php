@@ -22,6 +22,7 @@
     <!-- Custom Theme Style -->
     <link href="{{ asset('gentelella/build/css/custom.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" crossorigin="anonymous" />
+    @livewireStyles()
 </head>
 
   <body class="@yield('body_class', 'nav-md')">
@@ -44,6 +45,7 @@
 
     <!-- Custom Theme Scripts -->
     <script src="{{ asset ('gentelella/build/js/custom.min.js') }}"></script>
+    @livewireScripts()
 
   </body>
 </html>

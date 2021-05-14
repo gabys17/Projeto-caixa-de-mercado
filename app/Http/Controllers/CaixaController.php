@@ -10,8 +10,6 @@ use Illuminate\Http\Request;
 
 class CaixaController extends Controller
 {
-    private $items;
-
     /**
      * Display a listing of the resource.
      *
@@ -19,14 +17,7 @@ class CaixaController extends Controller
      */
     public function index()
     {
-        $caixas = Caixa::with('categoria', 'marca', 'produto')->paginate(100);
-
-        $countCaixas = $caixas->count();
-
-        return view('caixa.index', array(
-            'caixas' => $caixas,
-            'countCaixas' => $countCaixas,
-        ));
+        return view('caixa.index');
     }
 
     public function create($produto_id, $quantity = null)
@@ -100,26 +91,6 @@ class CaixaController extends Controller
             $produto->delete();
         }
         return redirect('caixa');
-    }
-
-    public function addItem($produto_id, $quantity = null)
-    {
-        $produto_quantity = $this->items[$produto_id] ['quantity'] ?? null;
-
-        $this->items[$produto_id] = [
-            'produto_id' => $produto_id,
-            'quantity' => $produto_quantity + ($quantity ?? 1),
-        ];
-        dump($this->items);
-    }
-
-    public function removeItem($produto_id)
-    {
-        unset($this->items[$produto_id]);
-
-        dump($this->items);
-
-        // update item
     }
 
 }
