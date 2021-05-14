@@ -43,7 +43,7 @@
                     <input type="submit">
             </div>
             <div class="form-group">
-                <label for="nomeProduto">Estoque</label>
+                <label for="estoque">Estoque</label>
                 <input type="number" class="form-control" name="estoque" id="estoque" min="0" max="10000" step="0.01" required>
             </div>
             <button type="submit" class="btn btn-sm btn-success">Save</button>

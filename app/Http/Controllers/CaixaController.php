@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
+use App\Models\Marca;
+use App\Models\Produto;
 use App\Models\Caixa;
 use Illuminate\Http\Request;
 
@@ -26,6 +29,25 @@ class CaixaController extends Controller
         ));
     }
 
+    public function create($produto_id, $quantity = null)
+    {
+        $produtos = Produto::select('id', 'nome')->get();
+        $produtos = Produto::select('id', 'codigo')->get();
+        $produtos = Produto::select('id', 'valor')->get();
+        $produtos = Produto::select('id', 'estoque')->get();
+        $produto_quantity = $this->items[$produto_id] ['quantity'] ?? null;
+
+        $this->items[$produto_id] = [
+            'produto_id' => $produto_id,
+            'quantity' => $produto_quantity + ($quantity ?? 1),
+        ];
+        //$caixa = Caixa::select('id', 'quantidade')->get();
+
+        return view('caixa.create', [
+            'produtos' => $produtos
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -34,7 +56,18 @@ class CaixaController extends Controller
      */
     public function store(Request $request)
     {
-        //guarda os produtos no carrinho
+        $caixa = new Caixa();
+        $caixa->produto_id = $request->input('nomeProduto');
+        $caixa->produto_id = $request->input('valor');
+        $caixa->produto_id = $request->input('valor_total');
+        $caixa->produto_id = $request->input('codigo');
+        $caixa->produto_id = $request->input('estoque');
+        $caixa->produto_id = $request->input('file');
+        $caixa->produto_id = $request->input('quantidade');
+
+        $caixa->save();
+
+        return redirect('caixa');
     }
 
     /**
@@ -45,7 +78,7 @@ class CaixaController extends Controller
      */
     public function show(Caixa $caixa)
     {
-        // mostrar produto para consulta de valor e outras infos
+        return redirect('produto.show');
     }
 
     /**
