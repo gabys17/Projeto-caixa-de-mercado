@@ -10,6 +10,21 @@ class CaixaLivewire extends Component
     public $items = [];
     public $current_item = null;
     public $produto_codigo = null;
+    public $produto_ultimo_codigo = null;
+    public $produto_quantidade = 1;
+
+    public function mount()
+    {
+        $this->addItem(Produto::where('codigo', 789 )->first());
+        $this->addItem(Produto::where('codigo', 123456 )->first());
+        $this->addItem(Produto::where('codigo', 789 )->first());
+        $this->addItem(Produto::where('codigo', 123456 )->first());
+        $this->addItem(Produto::where('codigo', 123456 )->first());
+        $this->addItem(Produto::where('codigo', 123456 )->first());
+        $this->addItem(Produto::where('codigo', 123456 )->first());
+        $this->addItem(Produto::where('codigo', 123456 )->first());
+
+    }
 
     public function render()
     {
@@ -27,17 +42,18 @@ class CaixaLivewire extends Component
         if($produto)
             $this->addItem($produto);
 
+        $this->produto_ultimo_codigo = $this->produto_codigo;
         $this->produto_codigo = null;
     }
 
-    public function addItem(Produto $produto, $quantity = null)
+    public function addItem(Produto $produto, $quantidade = null)
     {
-        $produto_quantity = $this->items[$produto->id] ['quantity'] ?? null;
+        $produto_quantidade = $this->items[$produto->id] ['quantidade'] ?? null;
 
         $this->current_item = [
             'produto_id' => $produto->id,
-            'quantity' => $produto_quantity + ($quantity ?? 1),
-            'produto' => $produto,
+            'quantidade' => $produto_quantidade + ($quantidade ?? 1),
+            'produto'    => $produto->toArray(),
         ];
 
         $this->items[$produto->id] = $this->current_item;

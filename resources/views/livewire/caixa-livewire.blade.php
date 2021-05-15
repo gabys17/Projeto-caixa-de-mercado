@@ -2,17 +2,18 @@
 <div class="row">
     <div class="col-12">
         <div class="row">
-            <div class="col-4">
+            <div class="col-3">
                 <h1>Nome do produto</h1>
             </div>
             <div class="col-6">
-                <h2>{{ $produto_codigo }} <small> Categoria</small></h2>
+                <h2>Marca <small> Categoria</small></h2>
             </div>
-            <div class="col-2 pull-right">
+            <div class="col-3 pull-right">
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Código do produto"
-                        wire:model="produto_codigo"
-                        aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        wire:model="produto_codigo" wire:keydown.enter="addItemByCodigo()">
+                    <input type="number" class="form-control" placeholder="Quantidade"
+                        wire:model="produto_quantidade" wire:keydown.enter="addItemByCodigo()">
                     <div class="input-group-append">
                         <button class="btn btn-success" title="Adicione o produto" type="button" wire:click="addItemByCodigo()">
                             <i class="fas fa-plus-circle"></i>
@@ -69,14 +70,13 @@
                         </thead>
                         <tbody>
                             @foreach ( $items as $key => $item)
-
-                            <tr>
+                            <tr class="{{ $produto_ultimo_codigo == ($item['produto']['codigo'] ?? null) ? 'text-succes font-weight-bold' : '' }}">
                                 <td style="text-align:center">{{ $key }}</td>
-                                <td style="text-align:center">{{ $item['produto']->nome }}</td>
-                                <td style="text-align:center">{{ $item['produto']->codigo }}</td>
-                                <td style="text-align:center">{{ $item['produto']->quantidade }}</td>
-                                <td style="text-align:center">{{ $item['produto']->valor }}</td>
-                                <td style="text-align:center">{{ $item['produto']->valor_total }}</td>
+                                <td style="text-align:center">{{ $item['produto']['nome'] ?? null }}</td>
+                                <td style="text-align:center">{{ $item['produto']['codigo'] ?? null }}</td>
+                                <td style="text-align:center">{{ $item['quantidade'] }}</td>
+                                <td style="text-align:center">{{ $item['produto']['valor'] ?? 0 }}</td>
+                                <td style="text-align:center">{{ ($item['produto']['valor'] ?? 0) * $item['quantidade'] }}</td>
                             </tr>
                             @endforeach
                         </tbody>
