@@ -12,6 +12,12 @@ class CaixaLivewire extends Component
     public $produto_codigo = null;
     public $produto_ultimo_codigo = null;
     public $produto_quantidade = 1;
+    public $current_item_id  = null;
+    public $current_item_quantidade = null;
+    public $current_item_codigo = null;
+    public $current_item_valor = null;
+    public $current_item_estoque = null;
+    public $edicao = false;
 
     public function mount()
     {
@@ -39,8 +45,11 @@ class CaixaLivewire extends Component
         $produto_codigo = $this->produto_codigo;
         $produto = Produto::where('codigo', $produto_codigo)->first();
 
+        $produto_quantidade = $this->produto_quantidade && is_numeric($this->produto_quantidade)
+                                    ? (int) $this->produto_quantidade : 1;
+
         if($produto)
-            $this->addItem($produto);
+            $this->addItem($produto, $produto_quantidade);
 
         $this->produto_ultimo_codigo = $this->produto_codigo;
         $this->produto_codigo = null;
@@ -56,6 +65,12 @@ class CaixaLivewire extends Component
             'produto'    => $produto->toArray(),
         ];
 
+        $this->current_item_id = $this->current_item['produto_id'];
+        $this->current_item_quantidade = $this->current_item['quantidade'];
+        $this->current_item_codigo = $this->current_item['produto']['codigo'];
+        $this->current_item_valor = $this->current_item['produto']['valor'];
+        $this->current_item_estoque = $this->current_item['produto']['codigo'];
+
         $this->items[$produto->id] = $this->current_item;
 
     }
@@ -63,9 +78,32 @@ class CaixaLivewire extends Component
     public function removeItem($produto_id)
     {
         unset($this->items[$produto_id]);
+    }
 
+    public function edit($produto_id)
+    {
+        $this->edicao = true;
+    }
 
-        // update item
+    public function cancelEdit()
+    {
+        $this->edicao = false;
+    }
+
+    public function updateItemById()
+    {
+        $this->edicao = false;
+        $produto_quantidade = $this->current_item_quantidade;
+
+        $this->current_item['quantidade'] = $produto_quantidade + ($quantidade ?? 1);
+
+        // $this->current_item_id = $this->current_item['produto_id'];
+        // $this->current_item_quantidade = $this->current_item['quantidade'];
+        // $this->current_item_codigo = $this->current_item['produto']['codigo'];
+        // $this->current_item_valor = $this->current_item['produto']['valor'];
+        // $this->current_item_estoque = $this->current_item['produto']['codigo'];
+
+        // $this->items[$produto->id] = $this->current_item;
     }
 
 }

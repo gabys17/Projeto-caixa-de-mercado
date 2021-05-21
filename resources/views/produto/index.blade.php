@@ -49,15 +49,15 @@
                             <div class="item form-group">
                                 <div class="col-md-6 col-sm-6 offset-md-3">
                                     <form action="{{route('produto.destroy', [$produto->id])}}" method="POST">
-                                        <a href="{{ route ('produto.edit', $produto->id)}}" class="btn btn btn-warning">
+                                        <a href="{{ route ('produto.edit', $produto->id)}}" title="Editar" class="btn btn btn-warning">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <a href="{{ route ('produto.show', $produto->id)}}" class="btn btn btn-info">
+                                        <a href="{{ route ('produto.show', $produto->id)}}" title="Detalhe" class="btn btn btn-info">
                                             <i class="fa fa-eye"></i>
                                         </a>
                                         @method('DELETE')
                                         @csrf
-                                        <button type="submit" class="btn btn btn-danger">
+                                        <button type="submit" title="Remover" class="btn btn btn-danger">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </form>

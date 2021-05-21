@@ -1,6 +1,6 @@
 @extends('layouts.page')
 
-@section('page_title', 'Marcas')
+@section('page_title', 'Marcas - criar')
 
 @section('x_content')
 

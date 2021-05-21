@@ -1,6 +1,6 @@
 @extends('layouts.page')
 
-@section('page_title', 'Categorias')
+@section('page_title', 'Categorias - editar')
 
 @section('x_content')
 

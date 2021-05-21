@@ -1,7 +1,7 @@
 @extends('layouts.page')
 
 
-@section('page_title', 'Produtos')
+@section('page_title', 'Produtos - criar')
 
 @section('x_content')
 

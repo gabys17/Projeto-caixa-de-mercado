@@ -35,14 +35,14 @@
                     <tr>
                         <td>{{ $marca->nome }}</td>
                         <td>
-                            <a href="{{ route ('marca.edit', $marca->id)}}" class="btn btn-sn btn-warning">Editar</a><i
-                                class="fas fa-edit"></i>
+                            <a href="{{ route ('marca.edit', $marca->id)}}" title="Editar" class="btn btn-sn btn-warning p-0 px-1"><i
+                                class="fas fa-edit"></i></a>
                             <br>
                             <form action="{{route('marca.destroy', [$marca->id])}}" method="POST">
                                 @method('DELETE')
                                 @csrf
-                                <button type="submit" class="btn btn-sn btn-danger">Deletar</button> <i
-                                    class="fas fa-trash"></i>
+                                <button type="submit" title="Remover" class="btn btn-sn btn-danger p-0 px-1"><i
+                                    class="fas fa-trash"></i></button>
                             </form>
                         </td>
                     </tr>

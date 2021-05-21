@@ -33,9 +33,12 @@
                             <ul class="nav side-menu">
                                 <li><a><i class="fa fa-home"></i>Cadastro<span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="{{ route('categoria.index') }}">Categorias</a></li>
-                                        <li><a href="{{ route('marca.index') }}">Marcas</a></li>
-                                        <li><a href="{{ route('produto.index') }}">Produtos</a></li>
+                                        <li><a class="{{ request()->routeIs('categoria.index') ? 'active' : '' }}"
+                                            href="{{ route('categoria.index') }}">Categorias</a></li>
+                                        <li><a class="{{ request()->routeIs('marca.index') ? 'active' : '' }}"
+                                            href="{{ route('marca.index') }}">Marcas</a></li>
+                                        <li><a class="{{ request()->routeIs('produto.index') ? 'active' : '' }}"
+                                            href="{{ route('produto.index') }}">Produtos</a></li>
                                     </ul>
                                 </li>
 

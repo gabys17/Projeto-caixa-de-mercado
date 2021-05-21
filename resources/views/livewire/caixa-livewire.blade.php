@@ -31,25 +31,29 @@
             </div>
             <div class="col-3">
                 <div class="row">
-                    <fieldset disabled>
+                    <fieldset>
                         <legend class="mb-0">Código</legend>
                         <div class="m-0 mb-1">
-                          <input type="text" id="disabledTextInput" name="codigo" class="form-control" value="789">
+                          <input readonly type="text" id="disabledTextInput" name="codigo" class="form-control" value="{{ $current_item_codigo }}">
                         </div>
 
                         <legend class="mb-0">Quantidade</legend>
                         <div class="m-0 mb-1">
-                          <input type="number" id="number" name="quantidade" class="form-control" value="0">
+                            <input type="number" class="form-control" placeholder="Quantidade"
+                             wire:model="current_item_quantidade" wire:keydown.enter="updateItemById()"
+                             @if (!$edicao)
+                                readonly disabled
+                             @endif>
                         </div>
 
                         <legend class="mb-0">Valor unitario</legend>
                         <div class="m-0 mb-1">
-                          <input type="text" id="disabledTextInput" class="form-control" value="789">
+                          <input readonly type="text" id="disabledTextInput" class="form-control" value="{{ $current_item_valor }}">
                         </div>
 
                         <legend class="mb-0">Estoque</legend>
                         <div class="m-0 mb-1">
-                          <input type="text" id="disabledTextInput" class="form-control" value="789">
+                          <input readonly type="text" id="disabledTextInput" class="form-control" value="{{ $current_item_estoque }}">
                         </div>
 
                     </fieldset>
@@ -60,12 +64,13 @@
                     <table class="w-100 cupom-fiscal">
                         <thead>
                             <tr>
-                                <th style="text-align:center">#</th>
+                                <th style="text-align:center">Nº</th>
                                 <th style="text-align:center">Nome</th>
                                 <th style="text-align:center">Código</th>
                                 <th style="text-align:center">Quantidade</th>
                                 <th style="text-align:center">Valor unitário</th>
                                 <th style="text-align:center">Valor total</th>
+                                <th style="text-align:center">Açoes</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -77,6 +82,14 @@
                                 <td style="text-align:center">{{ $item['quantidade'] }}</td>
                                 <td style="text-align:center">{{ $item['produto']['valor'] ?? 0 }}</td>
                                 <td style="text-align:center">{{ ($item['produto']['valor'] ?? 0) * $item['quantidade'] }}</td>
+                                <td style="text-align:center">
+                                    <button class="btn btn-sm btn-warning p-0 px-1" title="editar" type="button"
+                                        wire:click="edit({{ $item['produto_id'] }})"><i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-danger p-0 px-1" title="remover" type="button"
+                                        wire:click="removeItem({{ $item['produto_id'] }})"><i class="fas fa-trash"></i>
+                                    </button>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
